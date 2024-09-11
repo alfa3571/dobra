@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simulação de Distância</h1>
+    <pre id="output">Aguardando...</pre>
+
+    <script>
+        const output = document.getElementById('output');
+        let a = 1;
+        let c1 = 'carro';
+        const c2 = '..';
+        let d = 0;
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function simulate() {
+            while (a === 1) {
+                await sleep(500); // Pausa por 500 milissegundos
+
+                const a13 = Math.floor(Math.random() * 11); // Gera um número aleatório entre 0 e 10
+
+                if (a13 === 0) {
+                    output.textContent = `A distância percorrida foi ${d.toFixed(1)}`;
+                    break;
+                }
+
+                output.textContent += `\n${c1}`;
+                d += 0.1;
+                c1 = c2 + c1;
+            }
+        }
+
+        simulate();
+    </script>
+</body>
+</html>
